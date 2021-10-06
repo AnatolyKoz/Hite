@@ -1,0 +1,83 @@
+export const addComponentToWhiteList = ({id}) => {
+  return (dispatch, getState) => {
+    dispatch(addIdToWhiteListID(id));
+  };
+};
+
+export const addComponentToGreyList = (id) => {
+  return (dispatch, getState) => {
+    dispatch(addIdToBlackListID(id));
+  };
+};
+
+export const addComponentToBlackList = (id) => {
+  return (dispatch, getState) => {
+    dispatch(addIdToGrayListID(id));
+  };
+};
+
+
+export const removeComponentFromWhiteList = ({id}) => {
+  return (dispatch, getState) => {
+    dispatch(removeIdFromWhiteListID(id));
+  };
+};
+
+
+export const removeComponentFromBlackList = ({id}) => {
+  return (dispatch, getState) => {
+    dispatch(removeIdFromBlackListID(id));
+  };
+};
+
+export const removeComponentFromGrayList = ({id}) => {
+  return (dispatch, getState) => {
+    dispatch(removeIdFromGrayListID(id));
+  };
+};
+
+
+const addIdToWhiteListID = (id) => {
+  return {type: ADD_COMPONENT_TO_ADVANCED_SEARCH_LIST, payload: {
+    id: id,
+    type: WHITELIST,
+  }};
+};
+
+const addIdToBlackListID = (id) => {
+  return {type: ADD_COMPONENT_TO_ADVANCED_SEARCH_LIST, payload: {
+    id: id,
+    type: BLACKLIST,
+  }};
+};
+const addIdToGrayListID = (id) => {
+  return {type: ADD_COMPONENT_TO_ADVANCED_SEARCH_LIST, payload: {
+    id: id,
+    type: GRAYLIST,
+  }};
+};
+
+const removeIdFromWhiteListID = (id) => {
+  return {type: REMOVE_COMPONENT_FROM_ADVANCED_SEARCH_LIST, payload: {
+    id: id,
+    type: WHITELIST,
+  },
+  };
+};
+
+const removeIdFromBlackListID = (id) => {
+  return {type: REMOVE_COMPONENT_FROM_ADVANCED_SEARCH_LIST, payload: {
+    id: id,
+    type: BLACKLIST,
+  }};
+};
+
+const removeIdFromGrayListID = (id) => {
+  return {type: REMOVE_COMPONENT_FROM_ADVANCED_SEARCH_LIST,
+    payload: {
+      id: id,
+      type: GRAYLIST,
+    },
+  };
+};
+

@@ -1,0 +1,28 @@
+.ContentGrid {
+  display: grid;
+  grid-template-columns: minmax(80px, 200px);
+  grid-gap: 2rem;
+  grid-auto-flow: dense;
+  margin: 7rem auto;
+
+  max-width: 1200px;
+
+  @media (max-width: 1200px) {
+    max-width: 1000px;
+  }
+
+  @media (max-width: 1000px) {
+    grid-gap: 1rem;
+    max-width: 860px;
+  }
+
+  @media (max-width: 900px) {
+    max-width: 700px;
+  }
+
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    margin: 7rem 2rem;
+  }
+}

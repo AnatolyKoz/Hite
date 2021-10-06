@@ -1,0 +1,15 @@
+.buttonIcon {
+  cursor: pointer;
+  height: 100%;
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  & > * {
+    fill: var(--color-brown);
+    max-width: 5rem;
+    height: 3rem;
+    width: 100px;
+  }
+}

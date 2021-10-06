@@ -1,0 +1,64 @@
+
+.checked {
+  & > .ButtonMenu__icon {
+    background-color: transparent;
+  }
+  & > .ButtonMenu__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+  & > .ButtonMenu__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+
+}
+
+
+//TODO BUG the cross turns into a arrow on hover
+.ButtonMenu {
+  cursor: pointer;
+  position: relative;
+  height: 100%;
+  
+  width: 7rem;
+  padding: 1.5rem;
+  
+  &__icon {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+ 
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: var(--color-brown);
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      transition: all 0.4s;
+    }
+    &::before {
+      top: -0.8rem;
+    }
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  &:hover > &__icon::before {
+    top: -1rem;
+  }
+
+  &:hover > &__icon::after {
+    top: 1rem;
+  }
+}
+
+

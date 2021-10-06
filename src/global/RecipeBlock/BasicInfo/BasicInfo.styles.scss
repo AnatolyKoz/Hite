@@ -1,0 +1,19 @@
+.BasicInfo {
+  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem;
+    @media (max-width: 1000px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+
+  &__Block {
+    text-align: center;
+    color: white;
+    background-color: var(--color-brown);
+    padding: 1rem;
+    border: 2px solid var(--color-brown);
+  
+  }
+}

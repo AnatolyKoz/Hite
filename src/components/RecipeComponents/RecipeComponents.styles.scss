@@ -1,0 +1,21 @@
+
+.RecipeComponents {
+    display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    margin: 2rem;
+    border: 2px solid var(--color-brown);
+    &-info {
+      text-decoration: none;
+      color: var(--color-black);
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 2rem;
+      padding: 1rem;
+      border: 2px solid var(--color-brown);
+      transition-duration: .5s;
+      &:hover {
+        background-color: var(--color-brown);
+        color: var(--color-white);
+      }
+    }
+  }

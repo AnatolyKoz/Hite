@@ -1,0 +1,13 @@
+.container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  height: 100%;
+  .logo {
+    fill: var(--color-brown);
+    padding: 0.5rem;
+    height: 4rem;
+    width: 4rem;
+  }
+}

@@ -1,0 +1,30 @@
+.search {
+  height: 100%;
+
+  flex: 0 0 40%;
+  padding: 1.5rem;
+  position: relative;
+
+  &__advancedSearch {
+    display: inline-block;
+    z-index: 0;
+    position: absolute;
+    cursor: pointer;
+    right: 10%;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    z-index: 0;
+    background-color: var(--color-brown);
+    transition-duration: 0.3s;
+    transform: translateY(-1.5rem);
+    &:hover {
+      transform: translateY(0rem);
+    }
+    &-text {
+      color: white;
+      font-weight: 200;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+    }
+  }
+}

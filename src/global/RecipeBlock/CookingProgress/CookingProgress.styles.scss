@@ -1,0 +1,29 @@
+.CookingProgress {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+
+ 
+
+  &__header {
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    background-color: var(--color-brown);
+  }
+
+   &__step {
+      &-header {
+        font-weight: bold;
+        font-family:  sans-serif;
+        margin: 0 0;
+        font-size: 2.5rem;
+        border-bottom: 4px solid var(--color-brown);
+      }
+      // margin: 2rem;
+      font-size: 1.5rem;
+      padding: 1rem;
+      border-bottom: 2px solid var(--color-brown);
+    
+    }
+}

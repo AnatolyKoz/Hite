@@ -1,0 +1,31 @@
+.MenuController {
+  background-color: white;
+  z-index: 2;
+  min-height: 400px;
+  min-width: 300px;
+  width: 40vw;
+  height: 100%;
+  list-style: none;
+  &__reference {
+    color: var(--color-Primary);
+    margin: 1rem;
+    text-align: center;
+    &-link {
+      transition: all 0.4s;
+      font-weight: 300;
+      padding: 1rem;
+      font-size: 2.5rem;
+      text-transform: uppercase;
+      color: var(--color-brown);
+      text-decoration: none;
+      background-size: 240%;
+      background-image: linear-gradient(120deg, transparent 0%, transparent 50%, var(--color-brown) 50%);
+      display: inline-block;
+      &:hover {
+        transform: translateX(-1rem);
+        color: var(--color-white);
+        background-position: 100%;
+      }
+    }
+  }
+}

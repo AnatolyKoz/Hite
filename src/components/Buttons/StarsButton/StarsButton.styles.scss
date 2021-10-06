@@ -1,0 +1,57 @@
+
+.StarsButton {
+  &-wrapper {
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  &-input {
+    position: absolute;
+    left: 0;
+    top: -50px;
+  }
+
+
+  &-star:hover,
+  &-star:hover~ &-star {
+    background-position: 0 0;
+  }
+  
+  &-wrapper:hover .rating-star:hover,
+  &-wrapper:hover .rating-star:hover~.rating-star,
+  &-input:checked~.rating-star {
+    background-position: 0 0;
+  }
+  
+  &-star,
+  &-wrapper:hover .rating-star {
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('http://css-stars.com/wp-content/uploads/2013/12/stars.png') 0 -16px;
+  }
+
+}
+
+
+
+// @media screen and (min-device-width: 320px) and (max-device-width: 640px) {
+//   .responsive-ad {
+//     display: none;
+//     text-align: center;
+//   }
+//   .responsive-ad-device {
+//     display: block;
+//   }
+// }
+
+// @media screen and (min-device-width: 960px) {
+//   .responsive-ad-device {
+//     display: none;
+//   }
+//   .responsive-ad {
+//     display: block;
+//     text-align: center;
+//   }
+// }

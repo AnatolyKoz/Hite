@@ -1,0 +1,23 @@
+.componentCard {
+  height: 20rem;
+  border-radius: 3px;
+  background-color: var(--color-white);
+  position: relative;
+  transition: all 0.5s;
+  box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.6);
+  
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.8);
+    transform: translateY(-1rem);
+  }
+  &__header {
+    width: 75%;
+    font-size: 3rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    position: absolute;
+    top: 55%;
+    right: 12%;
+    text-align: center;
+  }
+}

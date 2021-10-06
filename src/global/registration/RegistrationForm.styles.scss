@@ -1,0 +1,63 @@
+.RegistrationForm {
+  &-btn {
+    text-align: center;
+    margin: 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    text-transform: uppercase;
+    padding: 0.5rem;
+    border: none;
+    color: var(--color-white);
+    background-color: var(--color-brown);
+  }
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 40rem;
+  background-color: var(--color-brown-light);
+  z-index: 1;
+  font-size: 1.5rem;
+  padding: 1rem;
+
+  &__label {
+    font-size: 1.2rem;
+    margin: 1rem;
+    display: block;
+    opacity: 1;
+    transition: all 0.3s;
+  }
+
+  &__input {
+    padding: 1.5rem 2rem;
+    font-family: inherit;
+    font-size: 1.5rem;
+    border-radius: 2px;
+    // background-color: rgba($color: var(--color-white), $alpha: 0.5);
+    background-color: white;
+    border: none;
+    width: 100%;
+    display: block;
+    transition: all 0.3s;
+    &:focus:invalid {
+      border-bottom: 3px solid orangered;
+    }
+  }
+
+  &__input:placeholder-shown + &__label {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba($color: var(--color-black), $alpha: 0.1);
+    border-bottom: 3px solid var(--color-brown);
+  }
+
+  &__groupe {
+    margin: 1rem;
+  }
+
+  &__groupe:last-child {
+    margin-bottom: 0rem;
+  }
+}

@@ -1,0 +1,22 @@
+.AdvancedSearchController {
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+  text-align: center;
+  z-index: 2;
+  opacity: 0;
+  background-color: white;
+  // transform: translate(-200%, 0);
+  &-activate {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  &-input {
+    margin: 2rem;
+    width: 80%;
+  }
+   &-select {
+    margin: 2rem auto;
+    width: 90%;
+  }
+}
