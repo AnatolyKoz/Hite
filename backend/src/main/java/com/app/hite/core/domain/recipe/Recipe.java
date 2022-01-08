@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 import com.app.hite.core.dto.ProductsCharacteristicDTO;
+import com.app.hite.core.dto.Product;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -33,10 +34,10 @@ public @Entity class Recipe  {
     private List<CookingStage> cookingStages;
 
     @ElementCollection
-    private List<RecipeProduct> productList;
+    private List<Product> productList;
 
 
-    public Recipe(String name, List<CookingStage> cookingStages, List<RecipeProduct> productList, Integer difficulty, Integer portions,
+    public Recipe(String name, List<CookingStage> cookingStages, List<Product> productList, Integer difficulty, Integer portions,
                   ProductsCharacteristicDTO characteristicDTO) {
         this.name = name;
         this.productList = productList;

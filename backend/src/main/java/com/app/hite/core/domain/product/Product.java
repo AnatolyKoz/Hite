@@ -1,4 +1,4 @@
-package com.app.hite.core.domain.recipes;
+package com.app.hite.core.dto;
 
 
 import com.app.hite.core.domain.units.Unit;
@@ -16,12 +16,11 @@ import javax.persistence.Convert;
 import javax.persistence.Embeddable;
 import java.io.IOException;
 
-@AllArgsConstructor
 @Getter
 @Embeddable
+@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-public class RecipeProduct {
+public class Product {
 
     Long id;
 

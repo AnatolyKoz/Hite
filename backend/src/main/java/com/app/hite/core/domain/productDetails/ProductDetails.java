@@ -14,7 +14,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @Entity
-public class Product {
+public class ProductDetails {
 
 
     @Id
@@ -29,7 +29,7 @@ public class Product {
     private Integer squirrels;
     private Integer fats;
 
-    public Product(String name, Integer carbohydrates, Integer squirrels, Integer fats, Integer calorificValue) {
+    public ProductDetails(String name, Integer carbohydrates, Integer squirrels, Integer fats, Integer calorificValue) {
         this.name = name;
         this.carbohydrates = carbohydrates;
         this.squirrels = squirrels;

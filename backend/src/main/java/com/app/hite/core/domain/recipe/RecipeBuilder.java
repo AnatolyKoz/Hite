@@ -2,11 +2,9 @@ package com.app.hite.core.domain.recipes;
 
 import com.app.hite.core.dto.CreateRecipeDTO;
 import com.app.hite.core.dto.ProductsCharacteristicDTO;
+import com.app.hite.core.dto.Product;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +19,7 @@ public class RecipeBuilder {
     private Integer difficulty;
     private ProductsCharacteristicDTO characteristicDTO;
     private List<CookingStage> cookingStages = new ArrayList<>();
-    private List<RecipeProduct> productList = new ArrayList<>();
+    private List<Product> productList = new ArrayList<>();
 
     public void addCookingStage(CookingStage stage) {
         this.cookingStages.add(stage);
@@ -31,11 +29,11 @@ public class RecipeBuilder {
         this.cookingStages.addAll(stage);
     }
 
-    public void addProduct(RecipeProduct component) {
+    public void addProduct(Product component) {
         this.productList.add(component);
     }
 
-    public void addProducts(List<RecipeProduct> products) {
+    public void addProducts(List<Product> products) {
         this.productList.addAll(products);
     }
 

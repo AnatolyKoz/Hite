@@ -6,9 +6,9 @@ import lombok.Setter;
 
 @Setter
 @NoArgsConstructor
-public class ComponentBuilder {
+public class ComponentDetailsBuilder {
 
-    public ComponentBuilder(CreateProductDTO componentDTO) {
+    public ComponentDetailsBuilder(CreateProductDTO componentDTO) {
         this.setFats(componentDTO.getFats());
         this.setSquirrels(componentDTO.getSquirrels());
         this.setCalorificValue(componentDTO.getCalorificValue());
@@ -22,7 +22,7 @@ public class ComponentBuilder {
     Integer fats;
     Integer calorificValue;
 
-    public Product build() {
-        return new Product(name, carbohydrates, squirrels, fats, calorificValue);
+    public ProductDetails build() {
+        return new ProductDetails(name, carbohydrates, squirrels, fats, calorificValue);
     }
 }
