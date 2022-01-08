@@ -1,9 +1,9 @@
 package com.app.hite.core.domain.Units;
 
 
-import com.app.hite.core.domain.units.SiPrefixes;
-import com.app.hite.core.domain.units.Unit;
-import com.app.hite.core.domain.units.UnitType;
+import com.app.hite.core.domain.unit.SiPrefixes;
+import com.app.hite.core.domain.unit.Unit;
+import com.app.hite.core.domain.unit.UnitType;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

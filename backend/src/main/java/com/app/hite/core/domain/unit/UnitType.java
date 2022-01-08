@@ -1,4 +1,4 @@
-package com.app.hite.core.domain.units;
+package com.app.hite.core.domain.unit;
 
 
 import lombok.AllArgsConstructor;

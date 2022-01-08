@@ -1,9 +1,6 @@
-package com.app.hite.core.domain.units;
+package com.app.hite.core.domain.unit;
 
 import lombok.*;
-
-
-import java.lang.annotation.Annotation;
 
 /**
  Creates a new {@literal immutable} Unit for the given {@link UnitType}, {@link SiPrefixes } and Value

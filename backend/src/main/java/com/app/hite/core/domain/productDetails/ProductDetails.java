@@ -1,4 +1,4 @@
-package com.app.hite.core.domain.products;
+package com.app.hite.core.domain.productDetails;
 
 
 
@@ -13,8 +13,7 @@ import javax.persistence.Id;
 
 @Getter
 @NoArgsConstructor
-@Entity
-public class ProductDetails {
+public @Entity class ProductDetails {
 
 
     @Id

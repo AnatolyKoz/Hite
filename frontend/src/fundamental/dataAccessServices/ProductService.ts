@@ -1,7 +1,8 @@
 import axios from 'axios';
 import ProductPreview from '../../domain/Product/ProductPreview';
 import Product from '../../domain/Product/Product';
-import { plainToClass } from 'class-transformer';
+import {plainToClass} from 'class-transformer';
+import {AuthenticationService} from '../security/AuthenticationService';
 export interface ProductService {
   getProductByID(ID: number): Promise<Product>
   getProductsPreview(): Promise<ProductPreview[]>
@@ -20,8 +21,9 @@ class ProductServiceREST implements ProductService {
   */
   async getProductByID(ID: number): Promise<Product> {
     return new Promise((resolve, reject) => {
-      axios.get('/product/byId?id=' + ID).then((respone) => { 
-        resolve(plainToClass(Product, respone.data as Object)) 
+      axios.get('/product/byId?id=' + ID,
+          {headers: AuthenticationService.getAuthHeader()}).then((respone) => {
+        resolve(plainToClass(Product, respone.data as Object));
       }).catch((err) => reject(err));
     });
   }
@@ -32,8 +34,9 @@ class ProductServiceREST implements ProductService {
   */
   async getProductsPreview(): Promise<ProductPreview[]> {
     return new Promise((resolve, reject) => {
-      axios.get('/products/productPresences' ).then((respone) => {
-        resolve(plainToClass(ProductPreview, respone.data as Object[]))
+      axios.get('/products/productPresences',
+          {headers: AuthenticationService.getAuthHeader()} ).then((respone) => {
+        resolve(plainToClass(ProductPreview, respone.data as Object[]));
       }).catch((err) => reject(err));
     });
   }

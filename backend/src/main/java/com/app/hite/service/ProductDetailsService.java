@@ -1,10 +1,10 @@
 package com.app.hite.service;
 
 
-import com.app.hite.DAO.repository.Products;
+import com.app.hite.DAO.repository.ProductsDetails;
 import com.app.hite.core.domain.productPresence.ProductPresenceBuilder;
-import com.app.hite.core.domain.products.ProductDetails;
-import com.app.hite.core.domain.products.ComponentDetailsBuilder;
+import com.app.hite.core.domain.productDetails.ProductDetails;
+import com.app.hite.core.domain.productDetails.ProductDetailsBuilder;
 import com.app.hite.core.dto.CreateProductDTO;
 import com.app.hite.core.dto.PageCharacteristicsDTO;
 import lombok.AllArgsConstructor;
@@ -17,40 +17,42 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
-public class ProductService {
+public class ProductDetailsService {
 
-    private final Products productsRepository;
+    private final ProductsDetails productsDetailsRepository;
     private final ProductPresenceService productPresenceService;
 
     /**
-     * {@literal ReadOnly} METHODE get a {@link ProductDetails} from {@link Products} by {@link Long} id
+     * {@literal ReadOnly} METHODE get a {@link ProductDetails} from {@link ProductsDetails} by {@link Long} id
      */
     @ReadOnlyProperty
     public ProductDetails getProductById(@PathVariable("id") Long id) {
-        return productsRepository.findById(id).orElse(null);
+        return productsDetailsRepository.findById(id).orElse(null);
     }
 
     /**
      * {@literal ReadOnly} METHODE get {@link List}  of {@link ProductDetails} from {@link PageCharacteristicsDTO} with sorting
      */
     @ReadOnlyProperty
-    public List<ProductDetails> getProductsByPaging(PageCharacteristicsDTO characteristicsDTO) {
+    public Collection<ProductDetails> getProductsByPaging(PageCharacteristicsDTO characteristicsDTO) {
         Pageable paging = PageRequest.of(characteristicsDTO.getNumber(), characteristicsDTO.getPageSize(),
                 Sort.by(characteristicsDTO.getSortBy()));
-        return productsRepository.findAll(paging).getContent();
+        return productsDetailsRepository.findAll(paging).getContent();
     }
 
     /**
-     * {@literal ReadOnly} METHODE get {@link List} of {@link ProductDetails} from {@link Products} by {@link List<Long>} of IDs
+     * {@literal ReadOnly} METHODE get {@link List} of {@link ProductDetails} from {@link ProductsDetails} by {@link List<Long>} of IDs
      */
     @ReadOnlyProperty
-    public List<ProductDetails> getAllProductsByIDS(Iterable<Long> ids) {
-        return (List<ProductDetails>) productsRepository.findAllById(ids);
+    public Collection<ProductDetails> getAllProductsByIDS(Iterable<Long> ids) {
+        return (Collection<ProductDetails>) productsDetailsRepository.findAllById(ids);
     }
 
     /**
@@ -58,12 +60,13 @@ public class ProductService {
      */
     @Transactional
     public ProductDetails createProduct(CreateProductDTO componentDTO) {
-        ComponentDetailsBuilder componentbuilder = new ComponentDetailsBuilder(componentDTO);
-        ProductDetails productDetails = productsRepository.save(componentbuilder.build());
+        ProductDetailsBuilder componentBuilder = new ProductDetailsBuilder(componentDTO);
+        ProductDetails productDetails = productsDetailsRepository.save(componentBuilder.build());
 
         // CREATE NEW presents of component to optimize
         ProductPresenceBuilder presenceBuilder = new ProductPresenceBuilder();
         presenceBuilder.setProductDetails(productDetails);
+        presenceBuilder.setRecipesIDs(null);
         presenceBuilder.setRecipesIDs(null);
 
         productPresenceService.save(presenceBuilder.build());
@@ -73,7 +76,7 @@ public class ProductService {
     @Transactional
     public Boolean deleteProductByID(Long id) {
         if (!this.isProductExistByID(id)) throw new NoSuchElementException("Component don't exist");
-        productsRepository.deleteById(id);
+        productsDetailsRepository.deleteById(id);
         productPresenceService.deleteProductPresences(id);
         return true;
     }
@@ -83,6 +86,6 @@ public class ProductService {
      */
     @ReadOnlyProperty
     public Boolean isProductExistByID(Long id) {
-        return productsRepository.existsById(id);
+        return productsDetailsRepository.existsById(id);
     }
 }

@@ -1,7 +1,7 @@
 package com.app.hite.core.dto;
 
-import com.app.hite.core.domain.recipes.CookingStage;
-import com.app.hite.core.domain.recipes.RecipeProduct;
+import com.app.hite.core.domain.product.Product;
+import com.app.hite.core.domain.recipe.CookingStage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -10,6 +10,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @AllArgsConstructor
@@ -30,8 +31,8 @@ public class CreateRecipeDTO {
     private  String name;
 
     @NotNull(message = "CookingStages cannot be null")
-    private  List<CookingStage> cookingStages;
+    private Set<CookingStage> cookingStages;
 
-    @NotNull(message = "Products cannot be null")
-    private  List<RecipeProduct> products;
+    @NotNull(message = "ProductsDetails cannot be null")
+    private  Set<Product> products;
 }

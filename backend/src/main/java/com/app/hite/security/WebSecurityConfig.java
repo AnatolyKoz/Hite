@@ -1,4 +1,4 @@
-package com.app.hite.contoler;
+package com.app.hite.security;
 
 import com.app.hite.service.UserService;
 import lombok.AllArgsConstructor;

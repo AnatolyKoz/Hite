@@ -1,5 +1,9 @@
 package com.app.hite.core.domain.activity;
 
-public enum Activity {
-    class
+public enum ActivityGroup {
+    FirstGroup,
+    SecondGroup,
+    ThirdGroup,
+    ForthGroup,
+    FifthGroup;
 }

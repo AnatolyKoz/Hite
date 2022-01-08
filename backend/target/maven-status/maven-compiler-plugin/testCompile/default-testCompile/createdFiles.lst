@@ -1,0 +1,4 @@
+com\app\hite\core\domain\Units\UnitTest.class
+com\app\hite\HiteApplicationTests.class
+com\app\hite\service\RecipeServiceTest.class
+com\app\hite\service\ProductServiceTest.class

@@ -72,7 +72,12 @@ export function useRecipeSearchStore() {
  *  @function
  *  @return {recipeOverviewStore}  recipeOverviewStore with provided root store
  */
-export function useRecipeRecipeOverviewStore() {
+export function useRecipeOverviewStore() {
   const {recipeOverviewStore} = useRootStore();
   return recipeOverviewStore;
+}
+
+export function useLoginStore() {
+  const {loginStore} = useRootStore();
+  return loginStore;
 }

@@ -1,6 +1,6 @@
 package com.app.hite.service;
 
-import com.app.hite.core.domain.products.Product;
+import com.app.hite.core.domain.productDetails.ProductDetails;
 import com.app.hite.core.dto.CreateProductDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,15 +13,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class ProductServiceTest {
-    private final ProductService productService;
+    private final ProductDetailsService productDetailsService;
     private final CreateProductDTO componentDTO;
 
     /**
      * create component and get ID of created component
      **/
     @Autowired
-    public ProductServiceTest(ProductService productService) {
-        this.productService = productService;
+    public ProductServiceTest(ProductDetailsService productDetailsService) {
+        this.productDetailsService = productDetailsService;
         componentDTO = new CreateProductDTO("test", 1, 1, 1, 1);
 
     }
@@ -29,46 +29,46 @@ public class ProductServiceTest {
     @Test
     public void whenComponentCreate_mustStoreEqualComponent() {
         // save
-        Long componentID = productService.createProduct(componentDTO).getId();
+        Long componentID = productDetailsService.createProduct(componentDTO).getId();
 
         //get
-        Product product = productService.getProductById(componentID);
+        ProductDetails productDetails = productDetailsService.getProductById(componentID);
 
         //test
-        assertTrue(productService.isProductExistByID(componentID));
-        assertEquals(product.getName(), componentDTO.getName());
-        assertEquals(product.getCalorificValue(), componentDTO.getCalorificValue());
-        assertEquals(product.getCarbohydrates(), componentDTO.getCarbohydrates());
-        assertEquals(product.getFats(), componentDTO.getFats());
-        assertEquals(product.getSquirrels(), componentDTO.getSquirrels());
+        assertTrue(productDetailsService.isProductExistByID(componentID));
+        assertEquals(productDetails.getName(), componentDTO.getName());
+        assertEquals(productDetails.getCalorificValue(), componentDTO.getCalorificValue());
+        assertEquals(productDetails.getCarbohydrates(), componentDTO.getCarbohydrates());
+        assertEquals(productDetails.getFats(), componentDTO.getFats());
+        assertEquals(productDetails.getSquirrels(), componentDTO.getSquirrels());
     }
 
     @Test
     public void whenDeletedComponentWithNotExist_mustGetNoSuchElementException() {
         //save
-        Long componentID = productService.createProduct(componentDTO).getId();
+        Long componentID = productDetailsService.createProduct(componentDTO).getId();
 
         //delete
-        assertTrue(productService.deleteProductByID(componentID));
+        assertTrue(productDetailsService.deleteProductByID(componentID));
 
         // check
-        assertFalse(productService.isProductExistByID(componentID));
+        assertFalse(productDetailsService.isProductExistByID(componentID));
 
         // test
         Assertions.assertThrows(NoSuchElementException.class, () -> {
-            productService.deleteProductByID(componentID);
+            productDetailsService.deleteProductByID(componentID);
         });
     }
 
     @Test
     public void whenComponentDeleted_mustNotStoreComponent() {
         //save
-        Long componentID = productService.createProduct(componentDTO).getId();
+        Long componentID = productDetailsService.createProduct(componentDTO).getId();
 
         //delete
-        assertTrue(productService.deleteProductByID(componentID));
+        assertTrue(productDetailsService.deleteProductByID(componentID));
 
         // check
-        assertFalse(productService.isProductExistByID(componentID));
+        assertFalse(productDetailsService.isProductExistByID(componentID));
     }
 }

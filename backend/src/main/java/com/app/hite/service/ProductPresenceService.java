@@ -7,11 +7,13 @@ import org.springframework.data.annotation.ReadOnlyProperty;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Collection;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class ProductPresenceService {
+
     private final ProductPresences productPresencesRepository;
 
     @Transactional
@@ -23,7 +25,7 @@ public class ProductPresenceService {
     }
 
     @Transactional
-    public void removeRecipeFromProductPresence(List<Long> componentIDs, Long recipeID) {
+    public void removeRecipeFromProductPresence(Collection<Long> componentIDs, Long recipeID) {
         for (Long componentID : componentIDs) {
             ProductPresence productPresence = productPresencesRepository.findByComponentID(componentID);
             productPresence.getRecipesIDs().remove(recipeID);
@@ -45,8 +47,8 @@ public class ProductPresenceService {
     }
 
     @ReadOnlyProperty
-    public List<ProductPresence> getProductPresence() {
-        return (List<ProductPresence>) productPresencesRepository.findAll();
+    public Collection<ProductPresence> getProductPresence() {
+        return (Collection<ProductPresence>) productPresencesRepository.findAll();
     }
 
     @ReadOnlyProperty

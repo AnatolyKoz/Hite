@@ -9,7 +9,7 @@ import {routeConfigMap} from '../../config/routMapConfig';
 import PageCharacteristicsDTO from '../../domain/dto/PageCharacteristicsDTO';
 import Recipe from '../../domain/Recipe/Recipe';
 import useQuery from '../../hooks/useQuery';
-import {useRecipeRecipeOverviewStore} from '../../hooks/useStores';
+import {useRecipeOverviewStore} from '../../hooks/useStores';
 import Statuses from '../../utilities/Statuses';
 
 import './RecipesOverviewsPage.scss';
@@ -29,7 +29,7 @@ const RecipesOverviewsPage = observer(() => {
   const sortBy : string = query.get('sortBy');
   const pageSize : number = Number.parseInt(query.get('pageSize'));
   let pageCharacteristicsDTO = new PageCharacteristicsDTO(number, sortBy, pageSize);
-  const recipeOverviewStore = useRecipeRecipeOverviewStore();
+  const recipeOverviewStore = useRecipeOverviewStore();
   if (!pageCharacteristicsDTO.isFilled()) {
     pageCharacteristicsDTO = new PageCharacteristicsDTO();
     redirectToPage(pageCharacteristicsDTO);

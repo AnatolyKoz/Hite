@@ -1,31 +1,32 @@
 package com.app.hite.core.domainService;
 
-import com.app.hite.core.domain.products.Product;
+import com.app.hite.core.domain.productDetails.ProductDetails;
 import com.app.hite.core.dto.ProductsCharacteristicDTO;
-import com.app.hite.service.ProductService;
+import com.app.hite.service.ProductDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class DomainProductsService {
 
-    private final ProductService ser;
+    private final ProductDetailsService productDetailsService;
 
-    public ProductsCharacteristicDTO getComponentsCharacteristicDTO(List<Long> list) {
+    public ProductsCharacteristicDTO getComponentsCharacteristicDTO(Collection<Long> collection) {
         Integer calorificValue = 0;
         Integer carbohydrates = 0;
         Integer squirrels = 0;
         Integer fats = 0;
 
-        List<Product> products =  ser.getAllProductsByIDS(list);
-        for( Product product : products) {
-            calorificValue += product.getCalorificValue();
-            carbohydrates += product.getCarbohydrates();
-            squirrels += product.getFats();
-            fats += product.getSquirrels();
+        Collection<ProductDetails> productsDetails =  productDetailsService.getAllProductsByIDS(collection);
+        for( ProductDetails productDetails : productsDetails) {
+            calorificValue += productDetails.getCalorificValue();
+            carbohydrates += productDetails.getCarbohydrates();
+            squirrels += productDetails.getFats();
+            fats += productDetails.getSquirrels();
         }
         return new ProductsCharacteristicDTO(calorificValue, carbohydrates, squirrels, fats);
     }

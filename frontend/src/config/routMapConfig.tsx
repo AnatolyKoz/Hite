@@ -4,6 +4,7 @@ import RecipeCardPage from '../pages/RecipeCardPage/RecipeCardPage';
 import RecipeWorkbenchPage from '../pages/RecipeWorkbenchPage/RecipeWorkbenchPage';
 import HeaderPage from '../pages/HeaderPage/HeaderPage';
 import RecipesOverviewsPage from '../pages/RecipesOverviewsPage/RecipesOverviewsPage';
+import LoginPage from '../pages/LoginPage/LoginPage';
 
 // TODO поработать над роутингом
 /**
@@ -30,6 +31,7 @@ export const routeConfigArray: RouteConfig[] = [
   new RouteConfig('Recipe', '/recipe'),
   new RouteConfig('RecipeWorkbench', '/recipeWorkbench'),
   new RouteConfig('RecipesOverviews', '/recipesOverviews'),
+  new RouteConfig('Login', '/login'),
 ];
 
 export const routeConfigMap: Map<string, RouteConfig> =
@@ -47,6 +49,8 @@ export const RoutesConfig = () => {
           component={RecipeWorkbenchPage}/>
         <Route path = {routeConfigMap.get('RecipesOverviews').routLocation}
           component={RecipesOverviewsPage}/>
+        <Route path = {routeConfigMap.get('Login').routLocation}
+          component={LoginPage}/>
       </Switch>
     </BrowserRouter>;
   </div>;

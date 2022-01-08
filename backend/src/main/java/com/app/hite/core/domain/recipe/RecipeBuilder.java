@@ -1,13 +1,12 @@
-package com.app.hite.core.domain.recipes;
+package com.app.hite.core.domain.recipe;
 
 import com.app.hite.core.dto.CreateRecipeDTO;
 import com.app.hite.core.dto.ProductsCharacteristicDTO;
-import com.app.hite.core.dto.Product;
+import com.app.hite.core.domain.product.Product;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Setter
 @NoArgsConstructor
@@ -18,14 +17,15 @@ public class RecipeBuilder {
     private Integer portions;
     private Integer difficulty;
     private ProductsCharacteristicDTO characteristicDTO;
-    private List<CookingStage> cookingStages = new ArrayList<>();
-    private List<Product> productList = new ArrayList<>();
+    private Set<CookingStage> cookingStages = new HashSet<>();
+    private Set<Product> productList = new HashSet<>() {
+    };
 
     public void addCookingStage(CookingStage stage) {
         this.cookingStages.add(stage);
     }
 
-    public void addCookingStages(List<CookingStage> stage) {
+    public void addCookingStages(Collection<CookingStage> stage) {
         this.cookingStages.addAll(stage);
     }
 
@@ -33,7 +33,7 @@ public class RecipeBuilder {
         this.productList.add(component);
     }
 
-    public void addProducts(List<Product> products) {
+    public void addProducts(Collection<Product> products) {
         this.productList.addAll(products);
     }
 

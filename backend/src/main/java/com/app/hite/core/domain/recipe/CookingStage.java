@@ -1,4 +1,4 @@
-package com.app.hite.core.domain.recipes;
+package com.app.hite.core.domain.recipe;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

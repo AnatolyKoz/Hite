@@ -1,12 +1,10 @@
-package com.app.hite.core.dto;
+package com.app.hite.core.domain.product;
 
 
-import com.app.hite.core.domain.units.Unit;
+import com.app.hite.core.domain.unit.Unit;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,6 +24,7 @@ public class Product {
 
     @Convert(converter = ConverterToString.class)
     Unit value;
+
 
     private static class ConverterToString implements AttributeConverter<Unit, String> {
         private final ObjectMapper objectMapper = new ObjectMapper();

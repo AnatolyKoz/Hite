@@ -1,16 +1,17 @@
 import {ProductService} from '../fundamental/dataAccessServices/ProductService';
 import {RecipeService} from '../fundamental/dataAccessServices/RecipeService';
+import LoginStore from './LoginStore';
 import {ProductSearchStore} from './ProductSearchStore';
 import ProductStore from './ProductStore';
 import {RecipeOverviewStore} from './RecipeOverviewsStore';
 import {RecipeSearchStore} from './RecipeSearchStore';
 import {RecipeStore} from './RecipeStore';
 import {RecipeWorkbenchStore} from './RecipeWorkbenchStore';
+import UserStore from './UserStore';
 
 
 // TODO мне это все не нравится
 /**
- *
  *  Its  IoC @class which is responsible for providing dependencies
  *  @name RootStore
  */
@@ -22,7 +23,8 @@ export class RootStore {
   recipeOverviewStore: RecipeOverviewStore;
   productStore: ProductStore;
   productSearchStore: ProductSearchStore;
-
+  loginStore: LoginStore;
+  userStore: UserStore;
   // services
   productService: ProductService;
   recipeService: RecipeService;
@@ -44,5 +46,8 @@ export class RootStore {
 
     this.productStore = new ProductStore(this.productService);
     this.productSearchStore = new ProductSearchStore(this.productService);
+
+    this.loginStore = new LoginStore();
+    this.userStore = new UserStore();
   }
 }

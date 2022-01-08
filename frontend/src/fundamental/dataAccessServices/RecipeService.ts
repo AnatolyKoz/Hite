@@ -5,6 +5,7 @@ import CreateRecipeDTO from '../../domain/dto/CreateRecipeDTO';
 import PageCharacteristicsDTO from '../../domain/dto/PageCharacteristicsDTO';
 import Recipe from '../../domain/Recipe/Recipe';
 import RecipePreview from '../../domain/Recipe/RecipePreview';
+import {AuthenticationService} from '../security/AuthenticationService';
 
 export interface RecipeService {
   getRecipesPreview(): Promise<RecipePreview[]>;
@@ -33,6 +34,7 @@ class RecipeServiceREST implements RecipeService {
           'sortBy': 'difficulty',
           'pageSize': pageCharacteristicsDTO.pageSize,
         },
+        headers: AuthenticationService.getAuthHeader(),
       }).then((response: any) => resolve(plainToClass(Recipe, response.data as Object[])))
           .catch((res) => reject(res));
     });
@@ -44,7 +46,9 @@ class RecipeServiceREST implements RecipeService {
   */
   async getRecipesPreview(): Promise<RecipePreview[]> {
     return new Promise((resolve, reject) => {
-      axios.get('/recipes/previews').then((respone: any) => {
+      axios.get('/recipes/previews', {
+        headers: AuthenticationService.getAuthHeader(),
+      }).then((respone: any) => {
         resolve(plainToClass(RecipePreview, respone.data as Object[]));
       }).catch((err) => reject(err));
     });
@@ -57,7 +61,9 @@ class RecipeServiceREST implements RecipeService {
   */
   async getRecipeByID(ID: number): Promise<Recipe> {
     return new Promise((resolve, rejcect) => {
-      axios.get('/recipes/byId?id=' + ID).then((response: any) => {
+      axios.get('/recipes/byId?id=' + ID, {
+        headers: AuthenticationService.getAuthHeader(),
+      }).then((response: any) => {
         resolve(plainToClass(Recipe, response.data));
       }).catch((err) => rejcect(err));
     });
@@ -75,6 +81,8 @@ class RecipeServiceREST implements RecipeService {
         'name': recipeCharacteristicsDTO.name,
         'cookingStages': recipeCharacteristicsDTO.cookingStages,
         'products': recipeCharacteristicsDTO.products,
+      }, {
+        headers: AuthenticationService.getAuthHeader(),
       })
           .then(() => resolve(true))
           .catch((err) => reject(new Error('Request error: ' + err)));
